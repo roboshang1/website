@@ -28,6 +28,7 @@
             font-size: 18px;
         }
         section {
+            display: none;
             padding: 20px;
         }
         footer {
@@ -39,19 +40,33 @@
             width: 100%;
         }
     </style>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            // Show the selected section
+            const activeSection = document.getElementById(sectionId);
+            activeSection.style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <header>
         Charles' Website
     </header>
     <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="javascript:void(0);" onclick="showSection('about')">About</a>
+        <a href="javascript:void(0);" onclick="showSection('projects')">Projects</a>
+        <a href="javascript:void(0);" onclick="showSection('contact')">Contact</a>
     </nav>
-    <section id="about">
+    <section id="about" style="display: block;">
         <h2>About Me</h2>
-        <p>Welcome to my website! I'm Charles, a computer engineering student passionate about hardware and software.</p>
+        <p>Welcome to my website! I'm Charles, a Computer Engineering and Computer Science major at Northeastern University passionate about hardware and embedded systems.<br> I am broadly interested in ECE topics like computer hardware, biomedical devices, and other technology that blends electronics with real-world applications.<br>I enjoy working with oscilloscopes/signal generators/DMMs, circuit design, microcontrollers, and digital logic, always looking to deepen my understanding of how<br>hardware systems are built and optimized. Outside of engineering, I like collecting coins and banknotes because <br>they constitute the intersection of history and the world around us.</p>
+    <h3>Resume/CV</h3>
+    <iframe src="https://github.com/roboshang1/website/raw/main/assets/Charles_Verity_Resume.pdf" width="100%" height="600px"></iframe>
     </section>
     <section id="projects">
         <h2>Projects</h2>
