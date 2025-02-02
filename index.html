@@ -4,27 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charles' Website</title>
-    <!-- Link to the external stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    function showSection(sectionId) {
-        // Hide all sections
-        const sections = document.querySelectorAll('section');
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
-
-        const activeSection = document.getElementById(sectionId);
-        activeSection.style.display = 'block';
-    
-        // Load script.js only when the "projects" section is shown
-        if (sectionId === 'projects' && !document.getElementById('project-script')) {
-            const script = document.createElement('script');
-            script.src = 'script.js';
-            script.id = 'project-script';  // Add a unique ID to prevent duplicate script loading
-            document.body.appendChild(script);
-        }
-    }
-
 </head>
 <body>
     <header>
@@ -36,29 +16,20 @@
         <a href="javascript:void(0);" onclick="showSection('contact')">Contact</a>
     </nav>
 
-    <script>
-        document.getElementById('projects-link').addEventListener('click', function() {
-            const script = document.createElement('script');
-            script.src = 'script.js';
-            document.body.appendChild(script);
-        });
-    </script>
-
     <section id="about" style="display: block;">
         <h2>About Me</h2>
         <p>Welcome to my website! I'm Charles, a Computer Engineering and Computer Science major at Northeastern University passionate about hardware and embedded systems. I am broadly interested in ECE topics like computer hardware, biomedical devices, and other technology that blends electronics with real-world applications. I enjoy working with oscilloscopes/signal generators/DMMs, circuit design, microcontrollers, and digital logic, always looking to deepen my understanding of how hardware systems are built and optimized. Outside of engineering, I like collecting coins and banknotes because <br>they constitute the intersection of history and the world around us.</p>
 
         <h3>Resume/CV</h3>
 
-        <!-- PDF Viewer with Scrollable Window -->
         <div class="pdf-container">
             <iframe src="https://docs.google.com/viewer?embedded=true&url=https://github.com/roboshang1/website/raw/273e381332ea5f5edb4e19e11f6f79a3babbf499/Charles_Verity_Resume.pdf"></iframe>
         </div>
 
-        <!-- Download Button -->
         <a href="https://github.com/roboshang1/website/raw/273e381332ea5f5edb4e19e11f6f79a3babbf499/Charles_Verity_Resume.pdf" class="download-btn" download>Download Resume</a>
     </section>
-    <section id="projects">
+
+    <section id="projects" style="display: none;">
         <h2>Projects</h2>
 
         <h3>Human ECG Signal Processing</h3>
@@ -82,23 +53,22 @@
         </ul>
 
         <p><em>Teamwork and hands-on practice were key to mastering signal analysis techniques and refining my ability to work with lab instrumentation in real-world scenarios.</em></p>
-    </section>
 
         <h4>Project Images</h4>
         <div class="image-container">
             <div class="image-box">
                 <img src="https://github.com/roboshang1/website/raw/9916179a7e16a80b80df9782ce4d10eea4ac247c/Screenshot%202025-02-02%20003339.png" alt="High pass and low pass filter combined circuit diagram"
-                    alt="High pass and low pass filter combined circuit diagram" onclick="openLightbox(this)">
+                    onclick="openLightbox(this)">
                 <p>High pass and low pass filter combined circuit diagram</p>
             </div>
             <div class="image-box">
                 <img src="https://github.com/roboshang1/website/raw/9916179a7e16a80b80df9782ce4d10eea4ac247c/Screenshot%202025-02-02%20003310.png" alt="ECG Circuit implemented on a protoboard"
-                    alt="ECG Circuit implemented on a protoboard" onclick="openLightbox(this)">
+                    onclick="openLightbox(this)">
                 <p>ECG Circuit implemented on a protoboard</p>
             </div>
             <div class="image-box">
                 <img src="https://github.com/roboshang1/website/raw/9916179a7e16a80b80df9782ce4d10eea4ac247c/Screenshot%202025-02-02%20003429.png" alt="MATLAB FFT plot of ECG signal"
-                    alt="MATLAB FFT plot of ECG signal" onclick="openLightbox(this)">
+                    onclick="openLightbox(this)">
                 <p>MATLAB FFT plot of ECG signal, based on the 1.55Hz peak, you can estimate my teammate's heart rate to be 60s × 1.55Hz = 93bpm, within a normal resting range</p>
             </div>
         </div>
@@ -106,13 +76,57 @@
         <div id="lightbox" class="lightbox" onclick="closeLightbox()">
             <img id="lightbox-img">
         </div>
-    
-    <section id="contact">
+    </section>
+
+    <section id="contact" style="display: none;">
         <h2>Contact</h2>
         <p>You can reach me at <a href="mailto:verity.ch@northeastern.edu">verity.ch@northeastern.edu</a>.</p>
     </section>
+
     <footer>
         &copy; 2025 Charles Verity. All rights reserved.
     </footer>
+
+    <script>
+        // Function to show the selected section and load project script when needed
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            const activeSection = document.getElementById(sectionId);
+            activeSection.style.display = 'block';
+
+            // Load script.js only when the "projects" section is shown
+            if (sectionId === 'projects' && !document.getElementById('project-script')) {
+                const script = document.createElement('script');
+                script.src = 'script.js';
+                // Add a unique ID to prevent duplicate script loading
+                script.id = 'project-script'; 
+                document.body.appendChild(script);
+            }
+        }
+
+        // Event listener for the Projects tab
+        document.getElementById('projects-link').addEventListener('click', function() {
+            showSection('projects');
+        });
+
+        // Function to open the lightbox for images
+        function openLightbox(image) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = image.src;
+            lightbox.style.display = 'block';
+        }
+
+        // Function to close the lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
