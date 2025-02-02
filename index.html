@@ -6,18 +6,25 @@
     <title>Charles' Website</title>
     <!-- Link to the external stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.style.display = 'none';
-            });
-            // Show the selected section
-            const activeSection = document.getElementById(sectionId);
-            activeSection.style.display = 'block';
+    function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        const activeSection = document.getElementById(sectionId);
+        activeSection.style.display = 'block';
+    
+        // Load script.js only when the "projects" section is shown
+        if (sectionId === 'projects' && !document.getElementById('project-script')) {
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            script.id = 'project-script';  // Add a unique ID to prevent duplicate script loading
+            document.body.appendChild(script);
         }
-    </script>
+    }
+
 </head>
 <body>
     <header>
@@ -25,9 +32,18 @@
     </header>
     <nav>
         <a href="javascript:void(0);" onclick="showSection('about')">About</a>
-        <a href="javascript:void(0);" onclick="showSection('projects')">Projects</a>
+        <a href="javascript:void(0);" id="projects-link">Projects</a>
         <a href="javascript:void(0);" onclick="showSection('contact')">Contact</a>
     </nav>
+
+    <script>
+        document.getElementById('projects-link').addEventListener('click', function() {
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            document.body.appendChild(script);
+        });
+    </script>
+
     <section id="about" style="display: block;">
         <h2>About Me</h2>
         <p>Welcome to my website! I'm Charles, a Computer Engineering and Computer Science major at Northeastern University passionate about hardware and embedded systems. I am broadly interested in ECE topics like computer hardware, biomedical devices, and other technology that blends electronics with real-world applications. I enjoy working with oscilloscopes/signal generators/DMMs, circuit design, microcontrollers, and digital logic, always looking to deepen my understanding of how hardware systems are built and optimized. Outside of engineering, I like collecting coins and banknotes because <br>they constitute the intersection of history and the world around us.</p>
