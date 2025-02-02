@@ -1,53 +1,67 @@
-y<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charles' Website</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            flex: 1;
+        }
+
         header {
             background-color: #333;
             color: white;
             padding: 20px;
             font-size: 24px;
         }
+
         nav {
             background-color: #444;
             padding: 10px;
         }
+
         nav a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
             font-size: 18px;
         }
+
         section {
             display: none;
             padding: 20px;
         }
+
         footer {
             background-color: #333;
             color: white;
             padding: 10px;
-            position: absolute;
-            bottom: 0;
+            position: relative;
             width: 100%;
+            text-align: center;
+        }
+
+        iframe {
+            border: none;
         }
     </style>
     <script>
         function showSection(sectionId) {
-            // Hide all sections
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
-            // Show the selected section
             const activeSection = document.getElementById(sectionId);
             activeSection.style.display = 'block';
         }
@@ -65,8 +79,8 @@ y<!DOCTYPE html>
     <section id="about" style="display: block;">
         <h2>About Me</h2>
         <p>Welcome to my website! I'm Charles, a Computer Engineering and Computer Science major at Northeastern University passionate about hardware and embedded systems.<br> I am broadly interested in ECE topics like computer hardware, biomedical devices, and other technology that blends electronics with real-world applications.<br>I enjoy working with oscilloscopes/signal generators/DMMs, circuit design, microcontrollers, and digital logic, always looking to deepen my understanding of how<br>hardware systems are built and optimized. Outside of engineering, I like collecting coins and banknotes because <br>they constitute the intersection of history and the world around us.</p>
-    <h3>Resume/CV</h3>
-    <iframe src="https://github.com/roboshang1/website/raw/main/assets/Charles_Verity_Resume.pdf" width="100%" height="600px"></iframe>
+        <h3>Resume/CV</h3>
+        <iframe src="https://github.com/roboshang1/website/raw/806bc4a0db2dbcfc1eb49487a228976209126d97/Charles_Verity_Resume.pdf" width="75%" height="450px"></iframe>
     </section>
     <section id="projects">
         <h2>Projects</h2>
