@@ -76,6 +76,11 @@ iframe {
 }
 
 ul.takeaways {
-    list-style-position: inside;
-    padding-left: 20px;
+    list-style-position: inside;  
+    padding-left: 20px;           
+    text-align: center;           
+}
+
+ul.takeaways li {
+    text-align: left;
 }
