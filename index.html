@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charles' Website</title>
     <style>
+        /* Ensure the body fills the entire height */
         html, body {
             height: 100%;
             margin: 0;
@@ -13,6 +14,7 @@
             flex-direction: column;
         }
 
+        /* Make the body take remaining space between header and footer */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -41,27 +43,58 @@
         section {
             display: none;
             padding: 20px;
+            flex: 1; /* This makes sure the content sections expand and fill the remaining space */
         }
 
+        /* Footer always stays at the bottom */
         footer {
             background-color: #333;
             color: white;
             padding: 10px;
-            position: relative;
             width: 100%;
             text-align: center;
         }
 
+        /* PDF container with scroll functionality */
+        .pdf-container {
+            width: 75%;
+            height: 450px;
+            margin: 0 auto;
+            overflow: auto;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
         iframe {
+            width: 100%;
+            height: 100%;
             border: none;
+        }
+
+        /* Button styling */
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #444;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .download-btn:hover {
+            background-color: #333;
         }
     </style>
     <script>
         function showSection(sectionId) {
+            // Hide all sections
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
+            // Show the selected section
             const activeSection = document.getElementById(sectionId);
             activeSection.style.display = 'block';
         }
@@ -79,8 +112,16 @@
     <section id="about" style="display: block;">
         <h2>About Me</h2>
         <p>Welcome to my website! I'm Charles, a Computer Engineering and Computer Science major at Northeastern University passionate about hardware and embedded systems.<br> I am broadly interested in ECE topics like computer hardware, biomedical devices, and other technology that blends electronics with real-world applications.<br>I enjoy working with oscilloscopes/signal generators/DMMs, circuit design, microcontrollers, and digital logic, always looking to deepen my understanding of how<br>hardware systems are built and optimized. Outside of engineering, I like collecting coins and banknotes because <br>they constitute the intersection of history and the world around us.</p>
+
         <h3>Resume/CV</h3>
-        <iframe src="https://github.com/roboshang1/website/raw/806bc4a0db2dbcfc1eb49487a228976209126d97/Charles_Verity_Resume.pdf" width="75%" height="450px"></iframe>
+
+        <!-- PDF Viewer with Scrollable Window -->
+        <div class="pdf-container">
+            <iframe src="https://docs.google.com/viewer?embedded=true&url=https://github.com/roboshang1/website/raw/806bc4a0db2dbcfc1eb49487a228976209126d97/Charles_Verity_Resume.pdf"></iframe>
+        </div>
+
+        <!-- Download Button -->
+        <a href="https://github.com/roboshang1/website/raw/806bc4a0db2dbcfc1eb49487a228976209126d97/Charles_Verity_Resume.pdf" class="download-btn" download>Download Resume</a>
     </section>
     <section id="projects">
         <h2>Projects</h2>
