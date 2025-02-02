@@ -84,3 +84,30 @@ ul.takeaways {
 ul.takeaways li {
     text-align: left;
 }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between images */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-top: 20px;
+}
+
+.image-box {
+    text-align: center;
+    width: 30%; /* Adjust image width */
+}
+
+.image-box img {
+    width: 100%; /* Make images responsive */
+    max-width: 250px; /* Set a reasonable max size */
+    height: auto;
+    border-radius: 8px; /* Optional: adds rounded corners */
+}
+
+.image-box p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #333;
+}
+
